@@ -23,37 +23,8 @@ wp.blocks.registerBlockType('ourplugin/are-you-paying-attention', {
             )
     },
     save: function (props){
-        return (
-            <>
-            <h6>Today the sky was absolutely {props.attributes.skyColor} and grass was {props.attributes.grassColor}.</h6>
-            </>
-        )
-    },
-    deprecated: [{
-        attributes: {
-            skyColor: {type: "String"},
-            grassColor: {type: "string"}
-        },
-        save: function (props){
-            return (
-                <>
-                <p>Today the sky was {props.attributes.skyColor} and grass was {props.attributes.grassColor}.</p>
-                </>
-            )
-        }
-    }, {
-        attributes: {
-            skyColor: {type: "String"},
-            grassColor: {type: "string"}
-        },
-        save: function (props){
-            return (
-                <>
-                <h3>Today the sky is {props.attributes.skyColor} and grass is {props.attributes.grassColor}.</h3>
-                </>
-            )
-        }
-    }]
+        return null;
+    }
 });
 
 

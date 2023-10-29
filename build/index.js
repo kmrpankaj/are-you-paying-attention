@@ -124,33 +124,8 @@ wp.blocks.registerBlockType('ourplugin/are-you-paying-attention', {
     }));
   },
   save: function (props) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", null, "Today the sky was absolutely ", props.attributes.skyColor, " and grass was ", props.attributes.grassColor, "."));
-  },
-  deprecated: [{
-    attributes: {
-      skyColor: {
-        type: "String"
-      },
-      grassColor: {
-        type: "string"
-      }
-    },
-    save: function (props) {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Today the sky was ", props.attributes.skyColor, " and grass was ", props.attributes.grassColor, "."));
-    }
-  }, {
-    attributes: {
-      skyColor: {
-        type: "String"
-      },
-      grassColor: {
-        type: "string"
-      }
-    },
-    save: function (props) {
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Today the sky is ", props.attributes.skyColor, " and grass is ", props.attributes.grassColor, "."));
-    }
-  }]
+    return null;
+  }
 });
 }();
 /******/ })()

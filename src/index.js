@@ -1,6 +1,7 @@
 import "./index.scss"
-import {TextControl, Flex, FlexBlock, FlexItem, Button, Icon, PanelBody, PanelRow} from "@wordpress/components";
-import {InspectorControls} from "@wordpress/block-editor";
+import {TextControl, Flex, FlexBlock, FlexItem, Button, Icon, PanelBody, PanelRow, ColorPicker} from "@wordpress/components";
+import {InspectorControls, BlockControls, AlignmentToolbar, useBlockProps} from "@wordpress/block-editor";
+import {ChromePicker} from "react-color";
 
 //IIFE
 (function() {
@@ -29,7 +30,18 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
   attributes: {
     question: { type: "String" },
     answers: {type: "array", default: [""]},
-    correctAnswer: {type: "number", default: undefined}
+    correctAnswer: {type: "number", default: undefined},
+    bgColor: {type: "String", default: "#EBEBEB"},
+    theAlignment: {type: "string", default: "left"}
+  },
+  example: {
+    attributes: {
+      question: "What is my name?",
+      correctAnswer: 2,
+      answers: ['Meowsalot', 'Barksalot', 'Purrsoud', 'Brad'],
+      theAlignment: "center",
+      bgColor: "#CFE8F1"
+    }
   },
   edit: EditComponents,
   save: function (props) {
@@ -38,6 +50,10 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
 });
 
 function EditComponents(props) {
+  const blockProps = useBlockProps({
+    className: "paying-attention-edit-block",
+    style: {backgroundColor: props.attributes.bgColor}
+  })
 
   function updateQuestion(value) {
     props.setAttributes({question: value})
@@ -59,11 +75,16 @@ function EditComponents(props) {
   }
 
   return (
-    <div className="paying-attention-edit-block">
+    <div {...blockProps}>
+      <BlockControls>
+        <AlignmentToolbar value={props.attributes.theAlignment} onChange={x=> props.setAttributes({theAlignment: x})} />
+
+        
+      </BlockControls>
       <InspectorControls>
         <PanelBody title="Background Color" initialOpen={true}>
           <PanelRow>
-            Hello
+            <ChromePicker color={props.attributes.bgColor} onChangeComplete={x => props.setAttributes({bgColor: x.hex})} disableAlpha={true} />
           </PanelRow>
         </PanelBody>
       </InspectorControls>
